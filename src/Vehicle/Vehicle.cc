@@ -639,6 +639,9 @@ void Vehicle::_mavlinkMessageReceived(LinkInterface* link, mavlink_message_t mes
     case MAVLINK_MSG_ID_RAW_IMU:
         emit mavlinkRawImu(message);
         break;
+    case MAVLINK_MSG_ID_RAW_ANG1:
+        emit mavlinkRawAng1(message);
+        break;
     case MAVLINK_MSG_ID_SCALED_IMU:
         emit mavlinkScaledImu1(message);
         break;
