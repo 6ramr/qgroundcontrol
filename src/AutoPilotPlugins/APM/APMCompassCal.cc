@@ -669,6 +669,16 @@ void APMCompassCal::_handleMavlinkRawImu(mavlink_message_t message)
     _calWorkerThread->lastScaledImuMutex.unlock();
 }
 
+void APMCompassCal::_handleMavlinkRawAng1(mavlink_message_t message)
+{
+    _calWorkerThread->lastScaledImuMutex.lock();
+    mavlink_msg_raw_ang1_decode(&message, &_calWorkerThread->lastRawAng1);
+    _calWorkerThread->rgLastScaledImu[3].xacc = _calWorkerThread->lastRawAng1.xacc;
+    _calWorkerThread->rgLastScaledImu[3].yacc = _calWorkerThread->lastRawAng1.yacc;
+    _calWorkerThread->rgLastScaledImu[3].zacc = _calWorkerThread->lastRawAng1.zacc;
+    _calWorkerThread->lastScaledImuMutex.unlock();
+}
+
 void APMCompassCal::_handleMavlinkScaledImu2(mavlink_message_t message)
 {
     _calWorkerThread->lastScaledImuMutex.lock();

@@ -34,12 +34,13 @@ public:
     // Overrides from QThread
     void run(void) Q_DECL_FINAL;
 
-    static const unsigned max_mags = 3;
+    static const unsigned max_mags = 4;
 
     bool                    rgCompassAvailable[max_mags];
     QMutex                  lastScaledImuMutex;
     mavlink_raw_imu_t       lastRawImu;
     mavlink_scaled_imu_t    rgLastScaledImu[max_mags];
+    mavlink_raw_ang1_t      lastRawAng1;
 
     static const char*      rgCompassParams[3][4];
 
@@ -151,6 +152,7 @@ signals:
 
 private slots:
     void _handleMavlinkRawImu(mavlink_message_t message);
+    void _handleMavlinkRawAng1(mavlink_message_t message);
     void _handleMavlinkScaledImu2(mavlink_message_t message);
     void _handleMavlinkScaledImu3(mavlink_message_t message);
 

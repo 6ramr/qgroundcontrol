@@ -637,9 +637,11 @@ void Vehicle::_mavlinkMessageReceived(LinkInterface* link, mavlink_message_t mes
         _handleSysStatus(message);
         break;
     case MAVLINK_MSG_ID_RAW_IMU:
+        qDebug() << "IMU DATA RECEIVED" << endl;
         emit mavlinkRawImu(message);
         break;
     case MAVLINK_MSG_ID_RAW_ANG1:
+        qDebug() << "ANG DATA RECEIVED" << endl;
         emit mavlinkRawAng1(message);
         break;
     case MAVLINK_MSG_ID_SCALED_IMU:
