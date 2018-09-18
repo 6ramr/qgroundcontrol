@@ -1000,7 +1000,7 @@ signals:
     void remoteControlRSSIChanged(uint8_t rssi);
 
     void mavlinkRawImu(mavlink_message_t message);
-    void mavlinkRawAng1(mavlink_message_t message);
+    void mavlinkRawAng(mavlink_message_t message);
     void mavlinkScaledImu1(mavlink_message_t message);
     void mavlinkScaledImu2(mavlink_message_t message);
     void mavlinkScaledImu3(mavlink_message_t message);

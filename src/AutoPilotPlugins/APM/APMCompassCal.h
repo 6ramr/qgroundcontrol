@@ -40,7 +40,7 @@ public:
     QMutex                  lastScaledImuMutex;
     mavlink_raw_imu_t       lastRawImu;
     mavlink_scaled_imu_t    rgLastScaledImu[max_mags];
-    mavlink_raw_ang1_t      lastRawAng1;
+    mavlink_raw_ang_t       lastRawAng;
 
     static const char*      rgCompassParams[3][4];
 
@@ -152,7 +152,7 @@ signals:
 
 private slots:
     void _handleMavlinkRawImu(mavlink_message_t message);
-    void _handleMavlinkRawAng1(mavlink_message_t message);
+    void _handleMavlinkRawAng(mavlink_message_t message);
     void _handleMavlinkScaledImu2(mavlink_message_t message);
     void _handleMavlinkScaledImu3(mavlink_message_t message);
 
